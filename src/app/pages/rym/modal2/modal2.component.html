@@ -1,0 +1,43 @@
+<div class="modal fade" #modalElement tabindex="-1" aria-labelledby="rymModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rymModalLabel">Detalles de {{rym.name | titlecase}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <!-- Imagen del personaje -->
+              <img [src]="rym.image" [alt]="rym.name" class="img-fluid mb-3 rounded">
+              <p><strong>ID:</strong> {{rym.id}}</p>
+              <p><strong>Género:</strong> {{rym.gender | titlecase}}</p>
+              <p><strong>Especie:</strong> {{rym.species | titlecase}}</p>
+              <p><strong>Estado:</strong> {{rym.status | titlecase}}</p>
+            </div>
+            <div class="col-md-6">
+              <!-- Tipo de personaje -->
+              <p><strong>Tipo:</strong> {{rym.type || 'Desconocido'}}</p>
+              <p><strong>Origen:</strong> {{rym.origin.name}}</p>
+              <p><strong>Ubicación:</strong> {{rym.location.name}}</p>
+  
+              <!-- Episodios -->
+              <h6>Episodios:</h6>
+              <ul class="list-unstyled">
+                <li *ngFor="let ep of episodeDetails">
+                  {{ep.episode}} - {{ep.name}}
+                </li>
+              </ul>
+  
+              <!-- Fecha de creación -->
+              <p><strong>Creado en:</strong> {{rym.created | date: 'medium'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
